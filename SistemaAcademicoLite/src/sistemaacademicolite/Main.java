@@ -1,20 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package sistemaacademicolite;
 
-/**
- *
- * @author DANIELA ROJAS
- */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // TODO code application logic here
+    }
+    
+    static void registrarAsignatura() {
+        System.out.println("=== Registrar Asignatura ===");
+
+        System.out.print("Ingrese el código: ");
+        String codigo = scanner.nextLine();
+
+        System.out.print("Ingrese el nombre: ");
+        String nombre = scanner.nextLine();
+
+        System.out.print("Ingrese los créditos: ");
+        int creditos = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Ingrese el docente: ");
+        String docente = scanner.nextLine();
+
+        Asignatura asignatura = new Asignatura(codigo, nombre, creditos, docente);
+        listaAsignaturas.add(asignatura);
+
+        System.out.println("\n✅ Asignatura registrada exitosamente.");
+        System.out.println(asignatura);
     }
     
 }
