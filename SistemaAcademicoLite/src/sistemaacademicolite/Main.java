@@ -122,5 +122,50 @@ public class Main {
         System.out.println("No se encontro ninguna asignatura con el codigo: " + codigoBuscado);
     }
     
+    //  MÉTODOS DEL DESARROLLADOR 2
+    
+    static void registrarNota() {
+        System.out.println("===== Registrar Nota =====");
+
+        System.out.print("Ingrese el código del estudiante: ");
+        String codigoEstudiante = scanner.nextLine();
+
+        Estudiante estudianteEncontrado = null;
+        for (Estudiante e : listaEstudiantes) {
+            if (e.getCodigo().equalsIgnoreCase(codigoEstudiante)) {
+                estudianteEncontrado = e;
+                break; }
+        }
+
+        if (estudianteEncontrado == null) {
+            System.out.println("No se encontró ningún estudiante con el código: " + codigoEstudiante);
+            return; }
+
+        System.out.print("Ingrese el código de la asignatura: ");
+        String codigoAsignatura = scanner.nextLine();
+
+        Asignatura asignaturaEncontrada = null;
+        for (Asignatura a : listaAsignaturas) {
+            if (a.getCodigo().equalsIgnoreCase(codigoAsignatura)) {
+                asignaturaEncontrada = a;
+                break; }
+        }
+
+        if (asignaturaEncontrada == null) {
+            System.out.println("No se encontró ninguna asignatura con el código: " + codigoAsignatura);
+            return; }
+
+        System.out.print("Ingrese el valor de la nota (0.0 - 5.0): ");
+        double valor = Double.parseDouble(scanner.nextLine());
+
+        System.out.print("Ingrese el periodo (ej. 2025-1): ");
+        String periodo = scanner.nextLine();
+
+        Nota nota = new Nota(estudianteEncontrado, asignaturaEncontrada, valor, periodo);
+        listaNotas.add(nota);
+
+        System.out.println("\nNota registrada exitosamente.");
+        System.out.println(nota);
+    }
     
 }
