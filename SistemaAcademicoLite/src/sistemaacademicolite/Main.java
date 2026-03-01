@@ -24,7 +24,7 @@ public class Main {
         Asignatura asignatura = new Asignatura(codigo, nombre, creditos, docente);
         listaAsignaturas.add(asignatura);
 
-        System.out.println("\n✅ Asignatura registrada exitosamente.");
+        System.out.println("\nAsignatura registrada exitosamente.");
         System.out.println(asignatura);
     }
     
@@ -53,46 +53,74 @@ public class Main {
 
         for (Asignatura a : listaAsignaturas) {
             if (a.getCodigo().equalsIgnoreCase(codigoBuscado)) {
-                System.out.println("\n✅ Asignatura encontrada:");
+                System.out.println("\nAsignatura encontrada:");
                 System.out.println(a);
                 return;
             }
         }
 
-        System.out.println("❌ No se encontró ninguna asignatura con el código: " + codigoBuscado);
+        System.out.println("No se encontró ninguna asignatura con el código: " + codigoBuscado);
     }
     
     static void actualizarAsignatura() {
-    System.out.println("=== Actualizar Asignatura ===");
+        System.out.println("=== Actualizar Asignatura ===");
 
-    System.out.print("Ingrese el código de la asignatura a actualizar: ");
-    String codigoBuscado = scanner.nextLine();
+        System.out.print("Ingrese el código de la asignatura a actualizar: ");
+        String codigoBuscado = scanner.nextLine();
 
-    for (Asignatura a : listaAsignaturas) {
-        if (a.getCodigo().equalsIgnoreCase(codigoBuscado)) {
-            System.out.println("\n✅ Asignatura encontrada:");
-            System.out.println(a);
+        for (Asignatura a : listaAsignaturas) {
+            if (a.getCodigo().equalsIgnoreCase(codigoBuscado)) {
+                System.out.println("\nAsignatura encontrada:");
+                System.out.println(a);
 
-            System.out.println("\nIngrese los nuevos datos (Enter para mantener el valor actual):");
+                System.out.println("\nIngrese los nuevos datos (Enter para mantener el valor actual):");
 
-            System.out.print("Nuevo nombre [" + a.getNombre() + "]: ");
-            String nuevoNombre = scanner.nextLine();
-            if (!nuevoNombre.isEmpty()) a.setNombre(nuevoNombre);
+                System.out.print("Nuevo nombre [" + a.getNombre() + "]: ");
+                String nuevoNombre = scanner.nextLine();
+                if (!nuevoNombre.isEmpty()) a.setNombre(nuevoNombre);
 
-            System.out.print("Nuevos créditos [" + a.getCreditos() + "]: ");
-            String nuevosCreditos = scanner.nextLine();
-            if (!nuevosCreditos.isEmpty()) a.setCreditos(Integer.parseInt(nuevosCreditos));
+                System.out.print("Nuevos créditos [" + a.getCreditos() + "]: ");
+                String nuevosCreditos = scanner.nextLine();
+                if (!nuevosCreditos.isEmpty()) a.setCreditos(Integer.parseInt(nuevosCreditos));
 
-            System.out.print("Nuevo docente [" + a.getDocente() + "]: ");
-            String nuevoDocente = scanner.nextLine();
-            if (!nuevoDocente.isEmpty()) a.setDocente(nuevoDocente);
+                System.out.print("Nuevo docente [" + a.getDocente() + "]: ");
+                String nuevoDocente = scanner.nextLine();
+                if (!nuevoDocente.isEmpty()) a.setDocente(nuevoDocente);
 
-            System.out.println("\n✅ Asignatura actualizada exitosamente:");
-            System.out.println(a);
-            return;
+                System.out.println("\nAsignatura actualizada exitosamente:");
+                System.out.println(a);
+                return;
+            }
         }
-    }
 
-    System.out.println("❌ No se encontró ninguna asignatura con el código: " + codigoBuscado);
-}
+        System.out.println("No se encontró ninguna asignatura con el código: " + codigoBuscado);
+    }
+    
+    static void eliminarAsignatura() {
+        System.out.println("=== Eliminar Asignatura ===");
+
+        System.out.print("Ingrese el código de la asignatura a eliminar: ");
+        String codigoBuscado = scanner.nextLine();
+
+        for (Asignatura a : listaAsignaturas) {
+            if (a.getCodigo().equalsIgnoreCase(codigoBuscado)) {
+                System.out.println("\nAsignatura encontrada:");
+                System.out.println(a);
+                System.out.print("\nEsta seguro que desea eliminar esta asignatura? (s/n): ");
+                String confirmacion = scanner.nextLine();
+
+                if (confirmacion.equalsIgnoreCase("s")) {
+                    listaAsignaturas.remove(a);
+                    System.out.println("\nAsignatura eliminada exitosamente.");
+                } else {
+                    System.out.println("\nEliminacion cancelada.");
+                }
+                return;
+            }
+        }
+
+        System.out.println("No se encontro ninguna asignatura con el codigo: " + codigoBuscado);
+    }
+    
+    
 }
