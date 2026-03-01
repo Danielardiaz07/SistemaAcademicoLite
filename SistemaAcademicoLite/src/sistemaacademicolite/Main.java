@@ -168,4 +168,41 @@ public class Main {
         System.out.println(nota);
     }
     
+    static void listarNotas() {
+        System.out.println("===== Lista de Notas =====");
+
+        if (listaNotas.isEmpty()) {
+            System.out.println("No hay notas registradas.");
+            return; }
+
+        for (Nota n : listaNotas) {
+            System.out.println("----------------------------");
+            System.out.println(n); 
+        }
+    
+        System.out.println("----------------------------");
+        System.out.println("Total: " + listaNotas.size() + " nota(s).");
+    }
+
+    static void buscarNota() {
+        System.out.println("===== Buscar Nota =====");
+
+        System.out.print("Ingrese el código del estudiante: ");
+        String codigoBuscado = scanner.nextLine();
+
+        boolean encontrado = false;
+
+        for (Nota n : listaNotas) {
+            if (n.getEstudiante().getCodigo().equalsIgnoreCase(codigoBuscado)) {
+                System.out.println("----------------------------");
+                System.out.println(n);
+                encontrado = true; }
+        }
+
+        if (!encontrado) {
+            System.out.println("No se encontraron notas para el estudiante con código: " + codigoBuscado);
+        } else {
+            System.out.println("----------------------------"); }
+    }
+    
 }
