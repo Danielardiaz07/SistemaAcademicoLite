@@ -61,4 +61,38 @@ public class Main {
 
         System.out.println("❌ No se encontró ninguna asignatura con el código: " + codigoBuscado);
     }
+    
+    static void actualizarAsignatura() {
+    System.out.println("=== Actualizar Asignatura ===");
+
+    System.out.print("Ingrese el código de la asignatura a actualizar: ");
+    String codigoBuscado = scanner.nextLine();
+
+    for (Asignatura a : listaAsignaturas) {
+        if (a.getCodigo().equalsIgnoreCase(codigoBuscado)) {
+            System.out.println("\n✅ Asignatura encontrada:");
+            System.out.println(a);
+
+            System.out.println("\nIngrese los nuevos datos (Enter para mantener el valor actual):");
+
+            System.out.print("Nuevo nombre [" + a.getNombre() + "]: ");
+            String nuevoNombre = scanner.nextLine();
+            if (!nuevoNombre.isEmpty()) a.setNombre(nuevoNombre);
+
+            System.out.print("Nuevos créditos [" + a.getCreditos() + "]: ");
+            String nuevosCreditos = scanner.nextLine();
+            if (!nuevosCreditos.isEmpty()) a.setCreditos(Integer.parseInt(nuevosCreditos));
+
+            System.out.print("Nuevo docente [" + a.getDocente() + "]: ");
+            String nuevoDocente = scanner.nextLine();
+            if (!nuevoDocente.isEmpty()) a.setDocente(nuevoDocente);
+
+            System.out.println("\n✅ Asignatura actualizada exitosamente:");
+            System.out.println(a);
+            return;
+        }
+    }
+
+    System.out.println("❌ No se encontró ninguna asignatura con el código: " + codigoBuscado);
+}
 }
