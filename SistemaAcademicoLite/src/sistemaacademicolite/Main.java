@@ -239,4 +239,33 @@ public class Main {
         System.out.println("No se encontró ninguna nota para ese estudiante y asignatura.");
     }
     
+        static void eliminarNota() {
+        System.out.println("===== Eliminar Nota =====");
+
+        System.out.print("Ingrese el código del estudiante: ");
+        String codigoEstudiante = scanner.nextLine();
+
+        System.out.print("Ingrese el código de la asignatura: ");
+        String codigoAsignatura = scanner.nextLine();
+
+        for (Nota n : listaNotas) {
+            if (n.getEstudiante().getCodigo().equalsIgnoreCase(codigoEstudiante)
+                    && n.getAsignatura().getCodigo().equalsIgnoreCase(codigoAsignatura)) {
+
+                System.out.println("\nNota encontrada:");
+                System.out.println(n);
+
+                System.out.print("\n¿Está seguro que desea eliminar esta nota? (s/n): ");
+                String confirmacion = scanner.nextLine();
+
+                if (confirmacion.equalsIgnoreCase("s")) {
+                    listaNotas.remove(n);
+                    System.out.println("\nNota eliminada exitosamente.");
+                } else {
+                    System.out.println("\nEliminación cancelada."); }
+                return; }
+        }
+        
+        System.out.println("No se encontró ninguna nota para ese estudiante y asignatura.");
+    }  
 }
