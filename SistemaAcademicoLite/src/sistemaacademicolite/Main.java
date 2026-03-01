@@ -205,4 +205,38 @@ public class Main {
             System.out.println("----------------------------"); }
     }
     
+    static void actualizarNota() {
+        System.out.println("===== Actualizar Nota =====");
+
+        System.out.print("Ingrese el código del estudiante: ");
+        String codigoEstudiante = scanner.nextLine();
+
+        System.out.print("Ingrese el código de la asignatura: ");
+        String codigoAsignatura = scanner.nextLine();
+
+        for (Nota n : listaNotas) {
+            if (n.getEstudiante().getCodigo().equalsIgnoreCase(codigoEstudiante)
+                    && n.getAsignatura().getCodigo().equalsIgnoreCase(codigoAsignatura)) {
+
+                System.out.println("\nNota encontrada:");
+                System.out.println(n);
+
+                System.out.println("\nIngrese los nuevos datos (Enter para mantener el valor actual):");
+
+                System.out.print("Nuevo valor de nota [" + n.getValor() + "]: ");
+                String nuevoValor = scanner.nextLine();
+                if (!nuevoValor.isEmpty()) n.setValor(Double.parseDouble(nuevoValor));
+
+                System.out.print("Nuevo periodo [" + n.getPeriodo() + "]: ");
+                String nuevoPeriodo = scanner.nextLine();
+                if (!nuevoPeriodo.isEmpty()) n.setPeriodo(nuevoPeriodo);
+
+                System.out.println("\nNota actualizada exitosamente:");
+                System.out.println(n);
+                return; }
+        }
+
+        System.out.println("No se encontró ninguna nota para ese estudiante y asignatura.");
+    }
+    
 }
